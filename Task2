@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+/**
+ * @brief Обчислює суму від'ємних елементів в одновимірному масиві.
+ *
+ * @param arr  Вхідний статичний масив цілих чисел.
+ * @param size Кількість елементів у масиві.
+ * @return     Сума всіх від'ємних елементів масиву (0, якщо таких немає).
+ */
+int sum_negative(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < 0) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+
+int main() {
+
+    setlocale(LC_ALL,"");
+    int arr[100];
+    int n;
+
+    printf("Введiть розмiр масиву (вiд 1 до 100): ");
+    scanf("%d", &n);
+
+    if (n < 1 || n > 100) {
+        printf("Помилка: Неправильний розмiр масиву!\n");
+        return 1;
+    }
+
+    printf("Введiть %d елементiв масиву:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("arr[%d] = ", i);
+        scanf("%d", &arr[i]);
+    }
+
+    int result = sum_negative(arr, n);
+    printf("Сумма вiдємних елементiв = %d\n", result);
+
+    return 0;
+}
